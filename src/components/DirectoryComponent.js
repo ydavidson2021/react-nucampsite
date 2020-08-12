@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 
+//Week3-Presentational and Container Components. Passing onClick as props
+//Week 3- Functional Components
 function RenderDirectoryItem({campsite, onClick}) {
     return (
         <Card onClick={() => onClick(campsite.id)}>
