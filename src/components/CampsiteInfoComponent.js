@@ -1,6 +1,20 @@
-import React from 'react'; 
-import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import React, { Component } from 'react'; 
+import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Control, LocalForm, Errors } from 'react-redux-form';
+
+class CommentForm extends Component {
+    render() {
+        return(
+            <div>
+                <Button outline>
+                    <i className="fa fa-pencil fa-lg" /> {' '}
+                    Submit Comment
+                </Button>
+            </div> 
+        );
+    }
+}
 
 function RenderCampsite({campsite}){
     return(
@@ -28,6 +42,7 @@ function RenderComments({comments}){
                         {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
                         </p></div>)
                 })}
+                <CommentForm/>
             </div>
         );
     }
