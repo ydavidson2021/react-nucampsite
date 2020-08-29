@@ -192,18 +192,10 @@ export const addPromotions = promotions => ({
 
 //Task 2 
 
-export const postFeedback= (campsiteId, rating, author, text) => dispatch =>  { 
-    const newComment = {
-        campsiteId: campsiteId,  
-        rating: rating, 
-        author: author,  
-        text: text
-    };
-   newComment.date = new Date().toISOString();
-
-   return fetch(baseUrl + 'comments', {
+export const postFeedback= (feedback) => {
+   return fetch(baseUrl + 'feedback', {
                 method: "POST",
-                body: JSON.stringify(newComment),
+                body: JSON.stringify(feedback),
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -220,7 +212,10 @@ export const postFeedback= (campsiteId, rating, author, text) => dispatch =>  {
             error => { throw error; }
         )
         .then(response => response.json())
-        .then(response => dispatch(addComment(response)))
+        .then(response => {
+            console.log(response);
+            alert("Thank you for your feedback" + JSON.stringify(response));
+        })
         .catch(error => {
             console.log('post comment', error.message);
             alert('Your comment could not be posted\nError: ' + error.message);
